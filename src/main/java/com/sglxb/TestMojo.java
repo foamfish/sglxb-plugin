@@ -26,7 +26,7 @@ public class TestMojo extends AbstractMojo {
 
         System.out.println("森国龙欣博 插件");
         File javaPath = new File(param);
-        tongji(javaPath);
+        statistics(javaPath);
         System.out.println("param-->" + param);
         System.out.println("—Dargs-->" + args);
         for (Map.Entry<String, Integer> entry : fileTypeMap.entrySet()) {
@@ -34,19 +34,19 @@ public class TestMojo extends AbstractMojo {
         }
     }
 
-    private void tongji(File file) {
+    private void statistics(File file) {
 
         if (file.isDirectory()) {
             for (File f : file.listFiles()) {
-                tongji(f);
+                statistics(f);
             }
         } else if (file.isFile()) {
-            String filetype = file.getName().split("\\.")[1];
-            if (fileTypeMap.containsKey(filetype)) {
-                Integer num = fileTypeMap.get(filetype);
-                fileTypeMap.put(filetype, ++num);
+            String fileType = file.getName().split("\\.")[1];
+            if (fileTypeMap.containsKey(fileType)) {
+                Integer num = fileTypeMap.get(fileType);
+                fileTypeMap.put(fileType, ++num);
             } else {
-                fileTypeMap.put(filetype, new Integer(1));
+                fileTypeMap.put(fileType, new Integer(1));
             }
 
         }
